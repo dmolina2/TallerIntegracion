@@ -59,7 +59,7 @@ class FilmsController < ApplicationController
 		@busqueda = params[:id]
 
 		@peliculas = HTTParty.get('https://swapi.co/api/films/', :headers => {'Content-Type' => 'application/json'})
-		@cantidad_peliculas = @peliculas.length - 1
+		@cantidad_peliculas = @peliculas['results'].length - 1
 		for i in 0..@cantidad_peliculas do
 			@buscar = @peliculas['results'][i]['title']
 			if @buscar == @busqueda
